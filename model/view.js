@@ -5,5 +5,7 @@ const view = {
 
     searchBtn: document.getElementById("btn-lancer-recherche"),
 
-    result: document.getElementById("bloc-resultats")
+    result: document.getElementById("bloc-resultats"),
+
+    waitGif: document.getElementById("bloc-gif-attente")
 };

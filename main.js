@@ -7,8 +7,9 @@ let gamesList = new Games();
 
 view.searchBtn.addEventListener('click', async() => {
     const tag = format(view.tagInput.value);
-    gamesList.reset()
-    view.result.innerHTML = "";
+    reset(gamesList, view);
+    view.waitGif.style.display = "block";
+    
     try {
         const rep = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://www.freetogame.com/api/filter?tag='+tag)}`);
         let games = await transform(rep);
@@ -17,12 +18,18 @@ view.searchBtn.addEventListener('click', async() => {
             gamesList.addGame(tmpGame);
         }
         gamesList.getGames().sort(compare)
+        view.waitGif.style.display = "none";
         for (let game of gamesList.getGames()) {
-            console.log(game)
-            view.result.innerHTML += gameTemplate(game)
+            if (isKeyExists(gamesList.getFav(), game.getName())) {
+                view.result.innerHTML += gameTemplate(game, "pleine");
+            } else {
+                view.result.innerHTML += gameTemplate(game, "vide");
+            }
+            
         }
         
     }catch (e) {
         console.log(e);
     }
 });
+

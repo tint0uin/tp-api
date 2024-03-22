@@ -1,4 +1,6 @@
 class Game {
+    _id
+
     _name
 
     _img
@@ -18,6 +20,7 @@ class Game {
     _release_date
 
     constructor( game) {
+        this._id = game.id
         this._name = game.title;
         this._img = game.thumbnail;
         this._description = game.short_description;
@@ -27,6 +30,10 @@ class Game {
         this._publisher = game.publisher;
         this._developer = game.developer;
         this._release_date = game.release_date;
+    }
+
+    getId() {
+        return this._id;
     }
 
     getName() {

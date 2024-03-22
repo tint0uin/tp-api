@@ -7,30 +7,44 @@ async function transform(reponse) {
     return JSON.parse(obj.contents);
 }
 
-function gameTemplate(game) {
+function gameTemplate(game, fav) {
     return `<div class="game">
-      <a href=${game.getGameUrl()}>
-      <img class='tokenImage' src="${game.getImg()}" alt="img" />
-      <h2>${game.getName()}</h2>
-      <p class='description'>${game.getDescription()}</p>
-      <div class='gameInfo'>
-        <div class="genre">
-          <p>${game.getGenre()}</p>
-        </div>
-        <div class="platform">
-          <p>${game.getPlatform()}</p>
-        </div>
-      </div>
-      <hr />
-      <div class='creator'>
-        <p>developer : ${game.getDeveloper()}</p>
-        <p>release date : ${game.getReleaseDate()}</p>
-      </div>
-      </a>
-    </div>`
+              <a class="card" href=${game.getGameUrl()}>
+              <img class='tokenImage' src="${game.getImg()}" alt="img" />
+              <h2>${game.getName()}</h2>
+              <p class='description'>${game.getDescription()}</p>
+              <div class='gameInfo'>
+                <div class="genre">
+                  <p>${game.getGenre()}</p>
+                </div>
+                <div class="platform">
+                  <p>${game.getPlatform()}</p>
+                </div>
+              </div>
+                <div class='creator'>
+                  <p>developer : ${game.getDeveloper()}</p>
+                  <p>release date : ${game.getReleaseDate()}</p>
+              </div>
+              </a>
+              <button id="fav">
+                <img src="images/etoile-${fav}.svg" alt="Etoile vide" width="22" />
+              </button>
+            </div>`
 }
 
 function compare(a, b) {
     return a.getName().localeCompare(b.getName())
 }
 
+function reset(gamesList, view) {
+  gamesList.reset()
+  view.result.innerHTML = "";
+}
+
+function isKeyExists(obj, key) {
+  if (obj[key] == undefined) {
+    return false;
+  } else {
+    return true;
+  }
+}
