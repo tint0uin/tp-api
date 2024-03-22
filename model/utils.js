@@ -48,3 +48,12 @@ function isKeyExists(obj, key) {
     return true;
   }
 }
+
+gamesList.addFavGame(gamesList.getGames()[0]);
+
+console.log(gamesList.getFav());
+
+
+localStorage.setItem("test", JSON.stringify(gamesList.getFav()));
+
+
