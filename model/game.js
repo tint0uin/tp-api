@@ -17,16 +17,16 @@ class Game {
 
     _release_date
 
-    constructor(name, img, description, game_url, genre, platform, publisher, developer, release_date ) {
-        this._name = name;
-        this._img = img;
-        this._description = description;
-        this._game_url = game_url;
-        this._genre = genre;
-        this._platform = platform;
-        this._publisher = publisher;
-        this._developer = developer;
-        this._release_date = release_date;
+    constructor( game) {
+        this._name = game.title;
+        this._img = game.thumbnail;
+        this._description = game.short_description;
+        this._game_url = game.game_url;
+        this._genre = game.genre;
+        this._platform = game.platform;
+        this._publisher = game.publisher;
+        this._developer = game.developer;
+        this._release_date = game.release_date;
     }
 
     getName() {
