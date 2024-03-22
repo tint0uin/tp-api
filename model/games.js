@@ -13,4 +13,8 @@ class Games {
         this._games.push(game);
     }
 
+    reset() {
+        this._games = [];
+    }
+
 }
