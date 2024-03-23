@@ -7,5 +7,9 @@ const view = {
 
     result: document.getElementById("bloc-resultats"),
 
-    waitGif: document.getElementById("bloc-gif-attente")
+    waitGif: document.getElementById("bloc-gif-attente"),
+
+    favBtn :document.getElementsByClassName("fav"),
+
+    listFav: document.getElementById("liste-favoris")
 };

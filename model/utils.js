@@ -26,10 +26,18 @@ function gameTemplate(game, fav) {
                   <p>release date : ${game.getReleaseDate()}</p>
               </div>
               </a>
-              <button id="fav">
+              <button class="fav" id="${game.getId()}">
                 <img src="images/etoile-${fav}.svg" alt="Etoile vide" width="22" />
               </button>
             </div>`
+}
+
+function favTemplate(name, id) {
+  return ` <li>
+              <span id="${id}fav" title="Cliquer pour relancer la recherche">${name}</span>
+              <img src="images/croix.svg" alt="Icone pour supprimer le favori" width="15" title="Cliquer pour supprimer le favori"/>
+            </li>
+  `
 }
 
 function compare(a, b) {
@@ -41,19 +49,20 @@ function reset(gamesList, view) {
   view.result.innerHTML = "";
 }
 
-function isKeyExists(obj, key) {
-  if (obj[key] == undefined) {
-    return false;
-  } else {
-    return true;
+function isFav(list, name) {
+  for (game of list) {
+    if (game.name == name) {
+      return true;
+    }
   }
+  return false;
 }
 
-gamesList.addFavGame(gamesList.getGames()[0]);
+//gamesList.addFavGame(gamesList.getGames()[0]);
 
-console.log(gamesList.getFav());
+//console.log(gamesList.getFav());
 
 
-localStorage.setItem("test", JSON.stringify(gamesList.getFav()));
+//localStorage.setItem("test", JSON.stringify(gamesList.getFav()));
 
 

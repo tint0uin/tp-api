@@ -21,9 +21,7 @@ class Games {
     }
 
     addFavGame(game) {
-        this._favGames.length = this._favGames.length + 1;
-        this._favGames[game.getName()] = game.getId();
-        
+        this._favGames.push({"name" : game.getName(), "id": game.getId()});
     }
 
     removeFavGame(name) {
@@ -31,8 +29,15 @@ class Games {
     }
 
     getFav() {
-        console.log(this._favGames);
         return this._favGames;
+    }
+
+    getGameById(id) {
+        for (let game of this._games) {
+            if (game.getId() == id) {
+                return game;
+            }
+        }
     }
 
 }
