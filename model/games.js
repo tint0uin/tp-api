@@ -31,6 +31,12 @@ class Games {
     getFav() {
         return this._favGames;
     }
+    stockageLocalStorage() {
+        localStorage.setItem('favoris', JSON.stringify(this._favGames));
+    }
+    recuperationLocalStorage() {
+        this._favGames = JSON.parse(localStorage.getItem('favoris'));
+    }
 
     getGameById(id) {
         for (let game of this._games) {
