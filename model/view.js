@@ -11,5 +11,7 @@ const view = {
 
     favBtn :document.getElementsByClassName("fav"),
 
-    listFav: document.getElementById("liste-favoris")
+    listFav: document.getElementById("liste-favoris"),
+
+    unFavBtn: document.getElementsByClassName("unFav")
 };

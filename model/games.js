@@ -25,7 +25,7 @@ class Games {
     }
 
     removeFavGame(name) {
-        this._favGames = this._favGames.filter((game) => game.getName() !== name);
+        this._favGames = this._favGames.filter((game) => game.name !== name);
     }
 
     getFav() {

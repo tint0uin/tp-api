@@ -28,9 +28,9 @@ let getFavGame = async function (id) {
 let print = function (games) {
     for (let game of games) {
         if (isFav(gamesList.getFav(), game.getName())) {
-            view.result.innerHTML += gameTemplate(game, "pleine");
+            view.result.innerHTML += gameTemplate(game, "pleine", "disabled");
         } else {
-            view.result.innerHTML += gameTemplate(game, "vide");
+            view.result.innerHTML += gameTemplate(game, "vide", "");
         }
         
     }
@@ -40,13 +40,26 @@ let print = function (games) {
     }
 }
 
+let unfav = function (event) {
+    let name = event.target.title;
+    
+
+    gamesList.removeFavGame(name);
+    event.target.parentElement.remove();
+}
+
 
 let favListener = function (event) {
+    event.target.firstElementChild.src="../images/etoile-pleine.svg";
+    event.target.disabled="true";
     let game = gamesList.getGameById(event.target.id);
     gamesList.addFavGame(game);
     view.listFav.innerHTML += favTemplate(game.getName(), game.getId());
     document.getElementById(game.getId()+'fav').addEventListener('click', favSearch);
 
+    for (let fav of view.unFavBtn) {
+        fav.addEventListener('click', unfav);
+    }
 }
 
 let favSearch = async function (event) {
@@ -58,6 +71,8 @@ let favSearch = async function (event) {
     
     print(gamesList.getGames());
 }
+
+
 
 
 

@@ -7,7 +7,7 @@ async function transform(reponse) {
     return JSON.parse(obj.contents);
 }
 
-function gameTemplate(game, fav) {
+function gameTemplate(game, fav, disabled) {
     return `<div class="game">
               <a class="card" href=${game.getGameUrl()}>
               <img class='tokenImage' src="${game.getImg()}" alt="img" />
@@ -26,7 +26,7 @@ function gameTemplate(game, fav) {
                   <p>release date : ${game.getReleaseDate()}</p>
               </div>
               </a>
-              <button class="fav" id="${game.getId()}">
+              <button class="fav" id="${game.getId()}" ${disabled}>
                 <img src="images/etoile-${fav}.svg" alt="Etoile vide" width="22" />
               </button>
             </div>`
@@ -35,7 +35,7 @@ function gameTemplate(game, fav) {
 function favTemplate(name, id) {
   return ` <li>
               <span id="${id}fav" title="Cliquer pour relancer la recherche">${name}</span>
-              <img src="images/croix.svg" alt="Icone pour supprimer le favori" width="15" title="Cliquer pour supprimer le favori"/>
+              <img class="unFav" src="images/croix.svg" alt="Icone pour supprimer le favori" width="15" title="${name}"/>
             </li>
   `
 }
