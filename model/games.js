@@ -22,10 +22,12 @@ class Games {
 
     addFavGame(game) {
         this._favGames.push({"name" : game.getName(), "id": game.getId()});
+        this.stockageLocalStorage();
     }
 
     removeFavGame(name) {
         this._favGames = this._favGames.filter((game) => game.name !== name);
+        this.stockageLocalStorage();
     }
 
     getFav() {

@@ -1,5 +1,5 @@
 let gamesList = new Games();
-
+gamesList.recuperationLocalStorage();
 let getGame =  async function (tag) {
     try {
         const rep = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://www.freetogame.com/api/filter?tag='+tag)}`);
