@@ -55,7 +55,6 @@ let favListener = function (event) {
     event.target.disabled="true";
     let game = gamesList.getGameById(event.target.id);
     gamesList.addFavGame(game);
-    gamesList.stockageLocalStorage();
     view.listFav.innerHTML += favTemplate(game.getName(), game.getId());
     document.getElementById(game.getId()+'fav').addEventListener('click', favSearch);
 
@@ -74,8 +73,6 @@ let favSearch = async function (event) {
     print(gamesList.getGames());
 }
 
-
-gamesList.recuperationLocalStorage();
 for (fav of gamesList.getFav()) {
     view.listFav.innerHTML += favTemplate(fav.name, fav.id);
     document.getElementById(fav.id+'fav').addEventListener('click', favSearch);
