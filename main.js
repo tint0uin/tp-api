@@ -10,7 +10,7 @@ let getGame =  async function (tag) {
         }
         gamesList.getGames().sort(compare)
     }catch (e) {
-        console.log(e);
+        throw "Aucun résultat pour cette recherche";
     }
 }
 
@@ -56,15 +56,18 @@ let favListener = function (event) {
     let game = gamesList.getGameById(event.target.id);
     gamesList.addFavGame(game);
     view.listFav.innerHTML += favTemplate(game.getName(), game.getId());
-    document.getElementById(game.getId()+'fav').addEventListener('click', favSearch);
+    
+    for (let Fav of view.searchFavBtn) {
+        Fav.addEventListener('click', favSearch);
+    }
 
-    for (let fav of view.unFavBtn) {
-        fav.addEventListener('click', unfav);
+    for (let unFav of view.unFavBtn) {
+        unFav.addEventListener('click', unfav);
     }
 }
 
 let favSearch = async function (event) {
-    let id  = event.target.id.replace('fav','');
+    let id  = event.target.id;
     reset(gamesList, view);
     view.waitGif.style.display = "block";
     await getFavGame(id);
@@ -73,9 +76,13 @@ let favSearch = async function (event) {
     print(gamesList.getGames());
 }
 
+
+
 for (fav of gamesList.getFav()) {
     view.listFav.innerHTML += favTemplate(fav.name, fav.id);
-    document.getElementById(fav.id+'fav').addEventListener('click', favSearch);
+    for (let Fav of view.searchFavBtn) {
+        Fav.addEventListener('click', favSearch);
+    }
 }
 for (let fav of view.unFavBtn) {
     fav.addEventListener('click', unfav);
@@ -96,7 +103,8 @@ view.searchBtn.addEventListener('click', async() => {
         print(gamesList.getGames());
         
     }catch (e) {
-        console.log(e);
+        view.waitGif.style.display = "none";
+        view.result.innerHTML = e;
     }
 });
 

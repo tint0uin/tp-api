@@ -34,7 +34,7 @@ function gameTemplate(game, fav, disabled) {
 
 function favTemplate(name, id) {
   return ` <li>
-              <span id="${id}fav" title="Cliquer pour relancer la recherche">${name}</span>
+              <span id="${id}" class="favSearch" title="Cliquer pour relancer la recherche">${name}</span>
               <img class="unFav" src="images/croix.svg" alt="Icone pour supprimer le favori" width="15" title="${name}"/>
             </li>
   `

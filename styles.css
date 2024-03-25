@@ -184,6 +184,10 @@ hr{
   text-decoration: none;
 }
 
+button {
+  background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
+}
+
 .game{
   user-select:none;
   max-width: 300px;
